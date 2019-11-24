@@ -25,3 +25,6 @@ page("/image-classifier", () => {
 });
 
 page();
+
+const loading = document.querySelector("#loading");
+loading.style.display = "none";
