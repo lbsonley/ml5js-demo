@@ -5,19 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    router: Path.resolve(__dirname, "../src/scripts/router/router.js"),
-    styleTransfer: Path.resolve(
-      __dirname,
-      "../src/scripts/style-transfer/styleTransfer.js"
-    ),
-    domManipulation: Path.resolve(
-      __dirname,
-      "../src/scripts/dom-manipulation/domManipulation.js"
-    ),
-    imageClassifier: Path.resolve(
-      __dirname,
-      "../src/scripts/image-classifier/imageClassifier.js"
-    )
+    router: Path.resolve(__dirname, "../src/scripts/router/router.js")
   },
   output: {
     path: Path.join(__dirname, "../build"),
