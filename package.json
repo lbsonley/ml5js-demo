@@ -1,28 +1,27 @@
 {
   "name": "webpack-starter",
   "version": "1.0.0",
-  "description": "A light foundation for your next frontend project based on webpack.",
+  "description": "Browser-based machine learning",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js  --colors",
     "start": "webpack-dev-server --open --config webpack/webpack.config.dev.js",
-    "prettier": "prettier --write src/**/*.js"
+    "prettier": "prettier --write src/**/*.js",
+    "serve": "node build/server/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wbkd/webpack-starter.git"
+    "url": "git+https://github.com/lbsonley/ml5js-demo.git"
   },
   "keywords": [
-    "webpack",
-    "startkit",
-    "frontend",
-    "es6",
-    "javascript",
-    "webdev"
+    "artificial intelligence",
+    "ml5.js",
+    "machine learning",
+    "p5.js"
   ],
-  "author": "webkid.io",
+  "author": "Ben Sonley <lbsonley@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wbkd/webpack-starter/issues"
+    "url": "https://github.com/lbsonley/ml5js-demo/issues"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
@@ -56,6 +55,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
     "core-js": "^3.4.1",
+    "express": "^4.17.1",
     "ml5": "^0.4.3",
     "normalize.css": "^8.0.1",
     "p5": "^0.10.2",
