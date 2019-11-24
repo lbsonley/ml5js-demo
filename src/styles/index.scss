@@ -1,6 +1,117 @@
-$body-color: slateblue;
+$space-xs: 8px;
+$space-sm: 16px;
+$space-md: 32px;
+$space-lg: 64px;
+$space-xl: 128px;
+
+$color-theme: #A256FF;
+$color-theme-dark: darken($color-theme, 10);
+$color-black: #000;
+$color-anthracite: #333;
+
+html {
+  font-size: 16px;
+}
 
 body {
-  color: $body-color;
   font-family: sans-serif;
+  color: $color-anthracite;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-top: 4rem;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1;
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-top: 1.6rem;
+  margin-bottom: 0;
+}
+
+a {
+  color: $color-theme;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    color: $color-theme-dark;
+  }
+}
+
+blockquote {
+  border-left: 3px solid $color-theme;
+  margin: 1.6rem 0 1.6rem 1rem;
+  padding: 1rem 0 1rem 2rem;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.container {
+  width: auto;
+  margin-top: 0;
+  margin-left: $space-md;
+  margin-right: $space-md;
+  margin-bottom: $space-md;
+  @media screen and (min-width: 768px) {
+    width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/**
+HEADER
+**/
+
+header {
+  margin: $space-sm 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+}
+
+.page-title {
+  font-size: 1rem;
+  margin: 0 0 0 $space-md;
+  color: $color-theme;
+}
+
+.ml5-logo {
+  height: 48px;
+}
+
+/**
+NAV
+**/
+
+nav {
+  margin: $space-md 0;
+
+  display: flex;
+  flex-flow: row wrap;
+
+  a {
+    font-weight: bold;
+    margin-right: $space-sm;
+    margin-bottom: $space-sm;
+  }
+}
+
+/**
+FOOTER
+**/
+
+footer {
+  margin: $space-lg 0 $space-md 0;
 }
