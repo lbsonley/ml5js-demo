@@ -1,20 +1,41 @@
 <h2>Image Style Transfer Demo</h2>
-<p id="status-msg"></p>
 
-<label for="image">Upload an image</label>
-<input type="file" id="image-input" name="image" accept="image/png, image/jpeg, image/jpg" />
+<p>The image style transfer is used to apply the styles of one image to the content of another. the ml5.js documentation provides a couple of pre-trained models for famous paintings. Now, we can "re-draw" any image into the style of these two masterpieces. Upload a file below to see it in action.</p>
+
+<div class="flex-grid">
+  <div class="col-6">
+    <label for="image"><h3>Upload an image</h3></label>
+    <input type="file" id="image-input" name="image" accept="image/png, image/jpeg, image/jpg" />
+  </div>
+  <section class="col-6">
+    <h3>Status</h3>
+    <div id="status-msg"></div>
+  </section>
+</div>
 
 <p>Input Image:</p>
 <img id="img" />
 
-<div id="style-a">
-  <p>Style A: <a href="https://en.wikipedia.org/wiki/The_Great_Wave_off_Kanagawa">The Great Wave off Kanagawa, 1829 - Katsushika Hokusai</a></p>
-  <img src="../../public/images/wave.jpg" />
+<div class="flex-grid">
+  <div class="col-6 my-md">
+    <p class="m-0">Style A: <a href="https://en.wikipedia.org/wiki/The_Great_Wave_off_Kanagawa">The Great Wave off Kanagawa, 1829 - Katsushika Hokusai</a></p>
+    <img src="../../public/images/wave.jpg" />
+    <button class="mt-sm" id="wave-transfer-btn">Transfer Wave Style</button>
+  </div>
+  <div class="col-6" id="style-wave">
+    <!-- styled output here -->
+  </div>
 </div>
 
-<div id="style-b">
-  <p>Style B: <a href="https://en.wikipedia.org/wiki/The_Great_Wave_off_Kanagawa">Udnie (Young American Girl, The Dance), 1913 - Francis Picabia</a></p>
-  <img src="../../public/images/udnie.jpg" />
+<div class="flex-grid">
+  <div class="col-6 my-md">
+    <p class="m-0">Style B: <a href="https://en.wikipedia.org/wiki/The_Great_Wave_off_Kanagawa">Udnie (Young American Girl, The Dance), 1913 - Francis Picabia</a></p>
+    <img src="../../public/images/udnie.jpg" />  
+    <button class="mt-sm" id="udnie-transfer-btn">Transfer Udnie Style</button>
+  </div>
+  <div id="style-udnie">
+    <!-- styled output here -->
+  </div>
 </div>
 
 <div id="style-transfer"></div>

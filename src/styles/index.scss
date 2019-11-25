@@ -8,6 +8,7 @@ $color-theme: #A256FF;
 $color-theme-dark: darken($color-theme, 10);
 $color-black: #000;
 $color-anthracite: #333;
+$color-white: #fff;
 
 html {
   font-size: 16px;
@@ -27,6 +28,13 @@ h1 {
 
 h2 {
   font-size: 2rem;
+  line-height: 1;
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 1.5rem;
   line-height: 1;
   margin-top: 3rem;
   margin-bottom: 0;
@@ -57,6 +65,20 @@ blockquote {
   line-height: 1.8;
 }
 
+button {
+  background-color: $color-theme;
+  color: $color-white;
+  font-weight: 700;
+  padding: 1rem .8rem;
+  border: none;
+  border-radius: 4px;
+}
+
+img {
+  max-width: 100%;
+}
+
+
 .container {
   width: auto;
   margin-top: 0;
@@ -68,6 +90,26 @@ blockquote {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+/**
+UTILS
+**/
+
+.m-0 {
+  margin: 0;
+}
+
+.my-md {
+  margin-top: $space-md !important;
+  margin-bottom: $space-md !important;
+}
+
+.mt-md {
+  margin-top: $space-md !important;
+}
+.mt-sm {
+  margin-top: $space-sm !important;
 }
 
 /**
@@ -114,4 +156,42 @@ FOOTER
 
 footer {
   margin: $space-lg 0 $space-md 0;
+}
+
+/**
+FLEX GRID
+**/
+
+@mixin makeColumns($columns: 12, $gutter: $space-xs) {
+  @for $i from 1 through $columns {
+    $width: ( $i / 12 ) * 100 * 1%;
+    .col-#{$i} {
+      flex-basis: 100%;
+
+      @media screen and (min-width: 768px) {
+        flex-basis: calc(#{$width} - #{2 * $space-xs});
+        margin: 0 $space-xs;
+      }
+    }
+  }
+}
+
+@include makeColumns();
+
+.flex-grid {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -$space-xs;
+}
+
+/**
+STYLE TRANFER 
+**/
+
+.status-text {
+  margin-top: $space-xs;
+}
+
+#image-input {
+  margin-top: $space-sm;
 }
