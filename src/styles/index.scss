@@ -1,8 +1,10 @@
-$space-xs: 8px;
-$space-sm: 16px;
-$space-md: 32px;
-$space-lg: 64px;
-$space-xl: 128px;
+$spaces: (
+  space-xs: 8px,
+  space-sm: 16px,
+  space-md: 32px,
+  space-lg: 64px,
+  space-xl: 128px
+);
 
 $color-theme: #A256FF;
 $color-theme-dark: darken($color-theme, 10);
@@ -82,9 +84,9 @@ img {
 .container {
   width: auto;
   margin-top: 0;
-  margin-left: $space-md;
-  margin-right: $space-md;
-  margin-bottom: $space-md;
+  margin-left: map-get($spaces, space-md);
+  margin-right: map-get($spaces, space-md);
+  margin-bottom: map-get($spaces, space-md);
   @media screen and (min-width: 768px) {
     width: 720px;
     margin-left: auto;
@@ -100,24 +102,46 @@ UTILS
   margin: 0;
 }
 
-.my-md {
-  margin-top: $space-md !important;
-  margin-bottom: $space-md !important;
+@mixin makeMarginUtils() {
+  $sizes: ('xs', 'sm', 'md', 'lg', 'xl');
+  $dimensions: ('x', 'y', 't', 'b', 'l', 'r');
+
+  @each $dim in $dimensions {
+    @each $size in $sizes {
+      .m#{$dim}-#{$size} {
+        @if $dim == 'x' {
+          margin-right: map-get($spaces, space-#{$size}) !important;
+          margin-left: map-get($spaces, space-#{$size}) !important;
+        }
+        @if $dim == 'l' {
+          margin-left: map-get($spaces, space-#{$size}) !important;
+        }
+        @if $dim == 'r' {
+          margin-right: map-get($spaces, space-#{$size}) !important;
+        }
+        @if $dim == 'y' {
+          margin-top: map-get($spaces, space-#{$size}) !important;
+          margin-bottom: map-get($spaces, space-#{$size}) !important;
+        }
+        @if $dim == 't' {
+          margin-top: map-get($spaces, space-#{$size}) !important;
+        }
+        @if $dim == 'b' {
+          margin-bottom: map-get($spaces, space-#{$size}) !important;
+        }
+      }
+    }
+  }
 }
 
-.mt-md {
-  margin-top: $space-md !important;
-}
-.mt-sm {
-  margin-top: $space-sm !important;
-}
+@include makeMarginUtils();
 
 /**
 HEADER
 **/
 
 header {
-  margin: $space-sm 0;
+  margin: map-get($spaces, space-sm) 0;
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-end;
@@ -125,7 +149,7 @@ header {
 
 .page-title {
   font-size: 1rem;
-  margin: 0 0 0 $space-md;
+  margin: 0 0 0 map-get($spaces, space-md);
   color: $color-theme;
 }
 
@@ -138,15 +162,15 @@ NAV
 **/
 
 nav {
-  margin: $space-md 0;
+  margin: map-get($spaces, space-md) 0;
 
   display: flex;
   flex-flow: row wrap;
 
   a {
     font-weight: bold;
-    margin-right: $space-sm;
-    margin-bottom: $space-sm;
+    margin-right: map-get($spaces, space-sm);
+    margin-bottom: map-get($spaces, space-sm);
   }
 }
 
@@ -155,22 +179,22 @@ FOOTER
 **/
 
 footer {
-  margin: $space-lg 0 $space-md 0;
+  margin: map-get($spaces, space-lg) 0 map-get($spaces, space-md) 0;
 }
 
 /**
 FLEX GRID
 **/
 
-@mixin makeColumns($columns: 12, $gutter: $space-xs) {
+@mixin makeColumns($columns: 12, $gutter: map-get($spaces, space-xs)) {
   @for $i from 1 through $columns {
     $width: ( $i / 12 ) * 100 * 1%;
     .col-#{$i} {
       flex-basis: 100%;
 
       @media screen and (min-width: 768px) {
-        flex-basis: calc(#{$width} - #{2 * $space-xs});
-        margin: 0 $space-xs;
+        flex-basis: calc(#{$width} - #{2 * map-get($spaces, space-xs)});
+        margin: 0 map-get($spaces, space-xs);
       }
     }
   }
@@ -181,7 +205,7 @@ FLEX GRID
 .flex-grid {
   display: flex;
   flex-flow: row wrap;
-  margin: 0 -$space-xs;
+  margin: 0 -map-get($spaces, space-xs);
 }
 
 /**
@@ -189,9 +213,9 @@ STYLE TRANFER
 **/
 
 .status-text {
-  margin-top: $space-xs;
+  margin-top: map-get($spaces, space-xs);
 }
 
 #image-input {
-  margin-top: $space-sm;
+  margin-top: map-get($spaces, space-sm);
 }
